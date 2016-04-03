@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">RPLMaps</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="txt_font_size">20sp</string>
+    <string name="btn_font_size">22sp</string>
+    <string name="btn_size">70sp</string>
+</resources>
