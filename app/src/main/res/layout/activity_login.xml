@@ -1,80 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.maps.project.LoginActivity"
-    android:orientation="vertical">
-
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <TextView
         android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="RPLMaps"
-        android:paddingTop="50sp"
-        android:layout_marginBottom="10dp"
-        android:textSize="50dp"/>
+        android:id="@+id/textView"
+        android:gravity="center_horizontal"
+        android:layout_gravity="center_horizontal" />
 
-    <!--<LinearLayout-->
-        <!--android:orientation="vertical"-->
-        <!--android:layout_gravity="center"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_margin="@dimen/place_autocomplete_button_padding"-->
-        <!-->-->
-        <EditText
-            android:id="@+id/txtUsername"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:hint="Username"
-            android:textSize="@string/txt_font_size"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtUsername"
+        android:hint="Username" />
 
-        <EditText
-            android:id="@+id/txtPassword"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:textSize="@string/txt_font_size"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/txtPassword"
+        android:hint="Password" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="20dp">
-        <Button
-            android:id="@+id/btnLogin"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Log In"
-            android:onClick="btnLoginOnClick"
-            android:textSize="@string/btn_font_size"
-            android:height="@string/btn_size"/>
+        android:gravity="center_horizontal">
 
         <Button
-            android:id="@+id/btnCancel"
-            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:id="@+id/btnLogin" />
+
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Cancel"
-            android:onClick="btnCancelOnClick"
-            android:textSize="@string/btn_font_size"
-            android:height="@string/btn_size"/>
+            android:id="@+id/btnCancel" />
     </LinearLayout>
-        <Button
-            android:id="@+id/btnNewUser"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New User"
-            android:onClick="btnNewUserOnClick"
-            android:textSize="@string/btn_font_size"
-            android:height="@string/btn_size"
-            android:layout_marginTop="30sp"/>
 
-    <!--</LinearLayout>-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Daftar"
+        android:id="@+id/btnDaftar"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>
