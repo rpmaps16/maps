@@ -15,14 +15,15 @@
         android:layout_marginBottom="10dp"
         android:textSize="50dp"/>
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/place_autocomplete_button_padding"
-        >
+    <!--<LinearLayout-->
+        <!--android:orientation="vertical"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="@dimen/place_autocomplete_button_padding"-->
+        <!-->-->
         <EditText
+            android:id="@+id/txtUsername"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -30,6 +31,7 @@
             android:textSize="@string/txt_font_size"/>
 
         <EditText
+            android:id="@+id/txtPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textAlignment="center"
@@ -74,5 +76,5 @@
             android:height="@string/btn_size"
             android:layout_marginTop="30sp"/>
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 </LinearLayout>
