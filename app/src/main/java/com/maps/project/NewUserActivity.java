@@ -29,9 +29,9 @@ public class NewUserActivity extends FragmentActivity {
         Intent intent = new Intent();
         user_.setUsername(txtUsername_.getText().toString());
         user_.setPassword(txtPass_.getText().toString());
-        String data[] = {txtUsername_.getText().toString(),txtPass_.getText().toString()};
-        intent.putExtra("user",data);
-//        intent.putExtra("user", user_.getData());
+//        String data[] = {txtUsername_.getText().toString(),txtPass_.getText().toString()};
+//        intent.putExtra("user",data);
+        intent.putExtra("user", user_.getData());
         setResult(RESULT_OK, intent);
         Log.e("user", user_.getUsername());
         Log.e("pass",user_.getPassword());

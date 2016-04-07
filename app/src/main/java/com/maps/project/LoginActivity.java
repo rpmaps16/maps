@@ -30,6 +30,8 @@ public class LoginActivity extends FragmentActivity {
 
     private EditText txtUsername_;
     private EditText txtPassword_;
+
+    public static final int DAFTAR_CODE = 303;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 //        Log.d("Login", "open application");
@@ -49,20 +51,20 @@ public class LoginActivity extends FragmentActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(resultCode == RESULT_OK)
-        {
-           // HashMap<String, String> tmp = data.getExtras().get("user");
+        if(requestCode == DAFTAR_CODE) {
+            if (resultCode == RESULT_OK) {
+                HashMap<String, String> tmp = (HashMap<String, String>) data.getExtras().get("user");
 
-            String arr[] = (String[]) data.getExtras().get("user");
-//            username_ = tmp.get("username");
-//            password_ = tmp.get("password");
-            username_ = arr[0];
-            password_ = arr[1];
+                //String arr[] = (String[]) data.getExtras().get("user");
+                username_ = tmp.get("username");
+                password_ = tmp.get("password");
+//            username_ = arr[0];
+//            password_ = arr[1];
+            }
+
+            Log.d("username", username_);
+            Log.d("pass", password_);
         }
-
-        Log.d("username",username_);
-        Log.d("pass",password_);
-
     }
 
     public void btnLoginOnClick(View view)
@@ -75,8 +77,8 @@ public class LoginActivity extends FragmentActivity {
         if(txtUsername_.getText().toString().equals(username_) && txtPassword_.getText().toString().equals(password_))
         {
             Intent intent = new Intent();
-            intent.putExtra("login",true);
-            setResult(RESULT_OK,intent);
+            intent.putExtra("login", true);
+            setResult(RESULT_OK, intent);
 //            startActivity(intent);
             finish();
         }
@@ -88,12 +90,14 @@ public class LoginActivity extends FragmentActivity {
     }
     public void btnCancelOnClick(View view)
     {
+        Intent intent = new Intent();
+        setResult(RESULT_CANCELED);
         finish();
     }
 
     public void btnNewUserOnClick(View view)
     {
         Intent intent = new Intent(this, NewUserActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent, DAFTAR_CODE);
     }
 }

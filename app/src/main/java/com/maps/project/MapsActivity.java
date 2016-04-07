@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap map_;
+    public static final int LOGIN_CODE = 203;
     private boolean isLogin_ = false;
 
     private void login()
@@ -22,7 +23,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if(!isLogin_)
         {
             Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
+            startActivityForResult(intent,LOGIN_CODE);
         }
     }
 
@@ -59,14 +60,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK)
-        {
-            isLogin_ = data.getBooleanExtra("login",true);
-            Log.d("login", String.valueOf(isLogin_));
-        }
-        else if(resultCode == RESULT_CANCELED)
-        {
-            finish();
+
+        if(requestCode == LOGIN_CODE) {
+            if (resultCode == RESULT_OK) {
+                isLogin_ = data.getBooleanExtra("login", true);
+                Log.d("login", String.valueOf(isLogin_));
+            } else if (resultCode == RESULT_CANCELED) {
+                finish();
+            }
         }
     }
 }
