@@ -111,7 +111,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Keluar"
-            android:id="@+id/btnKeluar" />
+            android:id="@+id/btnKeluar"
+            android:onClick="btnCancelOnClick"/>
 
     </LinearLayout>
 

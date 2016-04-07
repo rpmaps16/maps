@@ -1,10 +1,15 @@
 package com.maps.project;
 
 import android.content.Intent;
+import android.net.wifi.WifiConfiguration;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
@@ -14,7 +19,11 @@ import java.util.HashMap;
  */
 public class LoginActivity extends FragmentActivity {
 
+
 //    public static final int REQUEST_CODE_NEWUSER = 100;
+
+    private Button daftar;
+    private Button login;
 
     private String username_;
     private String password_;
@@ -26,6 +35,8 @@ public class LoginActivity extends FragmentActivity {
 //        Log.d("Login", "open application");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+
 
         username_="admin";
         password_ = "admin";
@@ -46,11 +57,19 @@ public class LoginActivity extends FragmentActivity {
             password_ = tmp.get("password");
         }
 
+//        Log.d("username",username_);
+//        Log.d("pass",password_);
+
     }
 
     public void btnLoginOnClick(View view)
     {
-        if(txtUsername_.toString() == username_ && txtPassword_.toString() == password_)
+//        Log.d("username",username_);
+//        Log.d("pass",password_);
+//        Log.d("username",txtUsername_.getText().toString());
+//        Log.d("pass", txtPassword_.getText().toString());
+
+        if(txtUsername_.getText().toString().equals(username_) && txtPassword_.getText().toString().equals(password_))
         {
             Intent intent = new Intent(this, MapsActivity.class);
             startActivity(intent);
