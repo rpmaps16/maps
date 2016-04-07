@@ -3,6 +3,7 @@ package com.maps.project;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -62,7 +63,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         if(resultCode == RESULT_OK)
         {
             isLogin_ = data.getBooleanExtra("login",true);
-            Log.d("login", isLogin_);
+            Log.d("login", String.valueOf(isLogin_));
         }
     }
 }
