@@ -105,7 +105,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Daftar"
-            android:id="@+id/btnDaftar" />
+            android:id="@+id/btnDaftar"
+            android:onClick="btnSignUpOnclick"/>
 
         <Button
             android:layout_width="wrap_content"
