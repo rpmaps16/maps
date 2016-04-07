@@ -59,11 +59,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if(resultCode == RESULT_OK)
         {
             isLogin_ = data.getBooleanExtra("login",true);
             Log.d("login", String.valueOf(isLogin_));
+        }
+        else if(resultCode == RESULT_CANCELED)
+        {
+            finish();
         }
     }
 }
