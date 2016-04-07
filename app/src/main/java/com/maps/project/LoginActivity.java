@@ -71,8 +71,11 @@ public class LoginActivity extends FragmentActivity {
 
         if(txtUsername_.getText().toString().equals(username_) && txtPassword_.getText().toString().equals(password_))
         {
-            Intent intent = new Intent(this, MapsActivity.class);
-            startActivity(intent);
+            Intent intent = new Intent();
+            intent.putExtra("login",true);
+            setResult(RESULT_OK,intent);
+//            startActivity(intent);
+            finish();
         }
         else
         {
