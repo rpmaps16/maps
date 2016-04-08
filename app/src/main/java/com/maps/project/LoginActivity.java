@@ -55,15 +55,12 @@ public class LoginActivity extends FragmentActivity {
             if (resultCode == RESULT_OK) {
                 HashMap<String, String> tmp = (HashMap<String, String>) data.getExtras().get("user");
 
-                //String arr[] = (String[]) data.getExtras().get("user");
                 username_ = tmp.get("username");
                 password_ = tmp.get("password");
-//            username_ = arr[0];
-//            password_ = arr[1];
             }
 
-            Log.d("username", username_);
-            Log.d("pass", password_);
+//            Log.d("username", username_);
+//            Log.d("pass", password_);
         }
     }
 

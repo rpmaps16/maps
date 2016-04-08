@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -16,7 +17,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap map_;
     public static final int LOGIN_CODE = 203;
-    private boolean isLogin_ = false;
+    private boolean isLogin_ = true;
+    private GPSTracker gps_;
 
     private void login()
     {
@@ -50,11 +52,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map_ = googleMap;
-
+        gps_ = new GPSTracker(MapsActivity.this);
+        LatLng loc;
+        if(gps_.canGetLocation())
+        {
+            loc = new LatLng(gps_.getLatitude(), gps_.getLongitude());
+//            map_.addMarker(new MarkerOptions().position(loc).title("Posisisku"));
+        }
+        else
+        {
+            loc = new LatLng(-34, 151);
+//            map_.addMarker(new MarkerOptions().position(loc).title("Marker in Sydney"));
+        }
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        map_.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        map_.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
+        map_.addMarker(new MarkerOptions().position(loc).title("PosisiKU"));
+        map_.moveCamera(CameraUpdateFactory.newLatLng(loc));
     }
 
     @Override
@@ -69,5 +82,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 finish();
             }
         }
+    }
+
+    public  void btnGoOnClick(View view)
+    {
+
     }
 }
