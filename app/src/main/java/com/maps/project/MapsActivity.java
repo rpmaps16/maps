@@ -17,7 +17,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap map_;
     public static final int LOGIN_CODE = 203;
-    private boolean isLogin_ = true;
+    private boolean isLogin_ = false;
     private GPSTracker gps_;
 
     private void login()
