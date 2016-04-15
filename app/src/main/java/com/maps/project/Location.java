@@ -42,16 +42,14 @@ public class Location {
 
     public  String getStatus(String addrs)
     {
-        JSONObject json = getJson(LOC_AUTOCOMPLETE+"&key="+API_KEY);
-        try {
-            String status = json.getString("status");
-            return  status;
-        } catch (JSONException e) {
-            e.printStackTrace();
-            return null;
-        }
+        String url = LOC_AUTOCOMPLETE+addrs+"&key="+API_KEY;
+//        JSONObject json = getJson(url);
+//        if(json == null)
+//            return "data kosong";
+        String status = getJson(url);
+        return  status;
     }
-    private JSONObject getJson(String url)
+    private String getJson(String url)
     {
         try{
             // Create a new HTTP Client
@@ -68,7 +66,7 @@ public class Location {
             // Instantiate a JSON object from the request response
             JSONObject jsonObject = new JSONObject(json);
 
-            return  jsonObject;
+            return  json;
         } catch(Exception e){
             // In your production code handle any errors and catch the individual exceptions
             e.printStackTrace();

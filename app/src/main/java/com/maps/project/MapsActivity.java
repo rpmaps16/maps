@@ -31,7 +31,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         loc = new Location();
-        Log.d("status",loc.getStatus("sleman"));
+        //Log.d("status",loc.getStatus("sleman"));
     }
 
     @Override
