@@ -20,6 +20,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private boolean isLogin_ = false;
     private GPSTracker gps_;
 
+    private Location loc;
+
     private void login()
     {
         if(!isLogin_)
@@ -27,6 +29,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             Intent intent = new Intent(this, LoginActivity.class);
             startActivityForResult(intent,LOGIN_CODE);
         }
+
+        loc = new Location();
+        Log.d("status",loc.getStatus("sleman"));
     }
 
     @Override
