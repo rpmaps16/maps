@@ -38,8 +38,6 @@ public class LoginActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-
-
         username_="admin";
         password_ = "admin";
         txtUsername_ = (EditText) findViewById(R.id.txtUsername);
