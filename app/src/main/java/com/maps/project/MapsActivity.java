@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -50,6 +52,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         login();
         setContentView(R.layout.activity_maps);
         txtDari= (EditText) findViewById(R.id.txtDari);
+        txtke = (EditText) findViewById(R.id.txtKe);
+        txtke.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                RequestQueue requestQueue = Volley.newRequestQueue(this.class);
+                GoogleAutoComplete googleAutoComplete=new GoogleAutoComplete(getBaseContext());
+                ArrayList<AutoComplete> data= googleAutoComplete.getPrediction(s.toString());
+//                Log.d("des "+0,data.get(0).getDescription());
+                for (int i = 0; i < data.size();i++ ){
+                    AutoComplete val = data.get(i);
+                    Log.d("des "+i,data.get(i).getDescription());
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         txtDari.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -58,11 +85,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                GoogleAutoComplete googleAutoComplete=new GoogleAutoComplete();
+//                RequestQueue requestQueue = Volley.newRequestQueue(this.class);
+                GoogleAutoComplete googleAutoComplete=new GoogleAutoComplete(getBaseContext());
                 ArrayList<AutoComplete> data= googleAutoComplete.getPrediction(s.toString());
+//                Log.d("des "+0,data.get(0).getDescription());
                 for (int i = 0; i < data.size();i++ ){
                     AutoComplete val = data.get(i);
-                    Log.d("des "+i,val.getDescription());
+                    Log.d("des "+i,data.get(i).getDescription());
                 }
 
             }
