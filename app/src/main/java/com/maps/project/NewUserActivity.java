@@ -10,13 +10,16 @@ import android.widget.EditText;
 /**
  * Created by ridwan-p on 4/3/16.
  */
-public class NewUserActivity extends FragmentActivity {
+public class NewUserActivity extends FragmentActivity
+{
 
-    private  User user_;
+    private User user_;
     private EditText txtUsername_;
     private EditText txtPass_;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_user);
         user_ = new User();
@@ -33,14 +36,15 @@ public class NewUserActivity extends FragmentActivity {
 //        intent.putExtra("user",data);
         intent.putExtra("user", user_.getData());
         setResult(RESULT_OK, intent);
-        Log.e("user", user_.getUsername());
-        Log.e("pass",user_.getPassword());
+//        Log.e("user", user_.getUsername());
+//        Log.e("pass", user_.getPassword());
 
         finish();
     }
+
     public void btnCancelOnClick(View view)
     {
-        setResult(RESULT_CANCELED,null);
+        setResult(RESULT_CANCELED, null);
         finish();
     }
 }

@@ -13,7 +13,8 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
+{
 
     private GoogleMap map_;
     public static final int LOGIN_CODE = 203;
@@ -23,10 +24,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void login()
     {
-        if(!isLogin_)
+        if (!isLogin_)
         {
             Intent intent = new Intent(this, LoginActivity.class);
-            startActivityForResult(intent,LOGIN_CODE);
+            startActivityForResult(intent, LOGIN_CODE);
         }
 
 //        loc = new Location();
@@ -34,7 +35,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         login();
         setContentView(R.layout.activity_maps);
@@ -54,16 +56,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
     @Override
-    public void onMapReady(GoogleMap googleMap) {
+    public void onMapReady(GoogleMap googleMap)
+    {
         map_ = googleMap;
         gps_ = new GPSTracker(MapsActivity.this);
         LatLng loc;
-        if(gps_.canGetLocation())
+        if (gps_.canGetLocation())
         {
             loc = new LatLng(gps_.getLatitude(), gps_.getLongitude());
 //            map_.addMarker(new MarkerOptions().position(loc).title("Posisisku"));
-        }
-        else
+        } else
         {
             loc = new LatLng(-34, 151);
 //            map_.addMarker(new MarkerOptions().position(loc).title("Marker in Sydney"));
@@ -75,20 +77,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == LOGIN_CODE) {
-            if (resultCode == RESULT_OK) {
+        if (requestCode == LOGIN_CODE)
+        {
+            if (resultCode == RESULT_OK)
+            {
                 isLogin_ = data.getBooleanExtra("login", true);
                 Log.d("login", String.valueOf(isLogin_));
-            } else if (resultCode == RESULT_CANCELED) {
+            } else if (resultCode == RESULT_CANCELED)
+            {
                 finish();
             }
         }
     }
 
-    public  void btnGoOnClick(View view)
+    public void btnGoOnClick(View view)
     {
 
     }

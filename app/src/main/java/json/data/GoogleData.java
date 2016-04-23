@@ -1,20 +1,20 @@
-package jsonparse;
+package json.data;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import httpClient.GoogleAddress;
-import httpClient.GoogleLocationAutoComplete;
-import httpClient.GooglePlace;
+import client.http.GoogleAddress;
+import client.http.GoogleLocationAutoComplete;
+import client.http.GooglePlace;
 
 /**
  * Created by ridwan-p on 4/16/16.
  */
-public class GoogleData {
+public class GoogleData
+{
 
     private String location_;
     private GoogleLocationAutoComplete locAutoComplete_;
@@ -27,10 +27,12 @@ public class GoogleData {
     {
         location_ = loc;
     }
+
     public GoogleData()
     {
         location_ = null;
     }
+
     public void setLocation(String loc)
     {
         location_ = loc;
@@ -39,36 +41,42 @@ public class GoogleData {
     //////////////////////////////////////////////////////////////////////////
     public double getLatitude()
     {
-        try {
+        try
+        {
             JSONObject geo = getGeometry();
             return geo.getJSONObject("location").getDouble("lat");
-        } catch (JSONException e) {
+        } catch (JSONException e)
+        {
             e.printStackTrace();
         }
-        return  0;
+        return 0;
     }
 
     public double getLongitude()
     {
-        try {
+        try
+        {
             JSONObject geo = getGeometry();
             return geo.getJSONObject("location").getDouble("lng");
-        } catch (JSONException e) {
+        } catch (JSONException e)
+        {
             e.printStackTrace();
         }
-        return  0;
+        return 0;
     }
 
     public String getFormatAddress()
     {
-        try {
+        try
+        {
             JSONArray result = getResult();
 
             return result.getJSONObject(0).getString("formatted_address");
-        }   catch (JSONException e) {
+        } catch (JSONException e)
+        {
             e.printStackTrace();
         }
-        return  null;
+        return null;
     }
 
     public ArrayList<String> getPredictionsDescription()
@@ -77,13 +85,15 @@ public class GoogleData {
 
         JSONArray predic = getPredictions();
 
-        for(int i = 0; i < predic.length(); ++i)
+        for (int i = 0; i < predic.length(); ++i)
         {
-            try {
-                JSONObject des  = predic.getJSONObject(i);
+            try
+            {
+                JSONObject des = predic.getJSONObject(i);
                 String value = des.getString("description");
                 data.add(value);
-            } catch (JSONException e) {
+            } catch (JSONException e)
+            {
                 e.printStackTrace();
             }
         }
@@ -91,38 +101,46 @@ public class GoogleData {
 
     }
 
-//////////////////////////////////Method private//////////////////////////////////////////
+    //////////////////////////////////Method private//////////////////////////////////////////
     private JSONArray getResult()
     {
-        try {
+        try
+        {
             jsonObject_ = new JSONObject(googleAddress_.getData(location_));
             return jsonObject_.getJSONArray("result");
-        }   catch (JSONException e) {
+        } catch (JSONException e)
+        {
             e.printStackTrace();
         }
-            return  null;
+        return null;
 
     }
+
     private JSONObject getGeometry()
     {
-        try {
+        try
+        {
             JSONArray result = getResult();
             return result.getJSONObject(0).getJSONObject("geometry");
 
-        } catch (JSONException e) {
+        } catch (JSONException e)
+        {
             e.printStackTrace();
         }
-        return  null;
+        return null;
     }
+
     private JSONArray getPredictions()
     {
-        try {
+        try
+        {
             jsonObject_ = new JSONObject(locAutoComplete_.getData(location_));
             return jsonObject_.getJSONArray("predictions");
-        }   catch (JSONException e) {
+        } catch (JSONException e)
+        {
             e.printStackTrace();
         }
-        return  null;
+        return null;
     }
 
 }

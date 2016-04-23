@@ -17,7 +17,8 @@ import java.util.HashMap;
 /**
  * Created by ridwan-p on 4/3/16.
  */
-public class LoginActivity extends FragmentActivity {
+public class LoginActivity extends FragmentActivity
+{
 
 
 //    public static final int REQUEST_CODE_NEWUSER = 100;
@@ -32,13 +33,15 @@ public class LoginActivity extends FragmentActivity {
     private EditText txtPassword_;
 
     public static final int DAFTAR_CODE = 303;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
 //        Log.d("Login", "open application");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        username_="admin";
+        username_ = "admin";
         password_ = "admin";
         txtUsername_ = (EditText) findViewById(R.id.txtUsername);
         txtPassword_ = (EditText) findViewById(R.id.txtPassword);
@@ -46,11 +49,14 @@ public class LoginActivity extends FragmentActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == DAFTAR_CODE) {
-            if (resultCode == RESULT_OK) {
+        if (requestCode == DAFTAR_CODE)
+        {
+            if (resultCode == RESULT_OK)
+            {
                 HashMap<String, String> tmp = (HashMap<String, String>) data.getExtras().get("user");
 
                 username_ = tmp.get("username");
@@ -64,25 +70,25 @@ public class LoginActivity extends FragmentActivity {
 
     public void btnLoginOnClick(View view)
     {
-        Log.d("username",username_);
-        Log.d("pass",password_);
+        Log.d("username", username_);
+        Log.d("pass", password_);
 //        Log.d("username",txtUsername_.getText().toString());
 //        Log.d("pass", txtPassword_.getText().toString());
 
-        if(txtUsername_.getText().toString().equals(username_) && txtPassword_.getText().toString().equals(password_))
+        if (txtUsername_.getText().toString().equals(username_) && txtPassword_.getText().toString().equals(password_))
         {
             Intent intent = new Intent();
             intent.putExtra("login", true);
             setResult(RESULT_OK, intent);
 //            startActivity(intent);
             finish();
-        }
-        else
+        } else
         {
             Toast.makeText(this, "Login GAGAL!!!", Toast.LENGTH_SHORT).show();
         }
 
     }
+
     public void btnCancelOnClick(View view)
     {
         Intent intent = new Intent();
