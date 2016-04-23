@@ -3,8 +3,11 @@ package com.maps.project;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -13,13 +16,19 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
+import json.data.GoogleAutoComplete;
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 {
 
     private GoogleMap map_;
     public static final int LOGIN_CODE = 203;
-    private boolean isLogin_ = false;
+    private boolean isLogin_ = true;
     private GPSTracker gps_;
+    private EditText txtDari;
+    private EditText txtke;
 
 
     private void login()
@@ -40,6 +49,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         login();
         setContentView(R.layout.activity_maps);
+        txtDari= (EditText) findViewById(R.id.txtDari);
+        txtDari.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                GoogleAutoComplete googleAutoComplete=new GoogleAutoComplete();
+                ArrayList<AutoComplete> data= googleAutoComplete.getPrediction(s.toString());
+                for (int i = 0; i < data.size();i++ ){
+                    AutoComplete val = data.get(i);
+                    Log.d("des "+i,val.getDescription());
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
