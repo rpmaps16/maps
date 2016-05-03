@@ -6,22 +6,30 @@
     android:orientation="vertical">
 
     <GridLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#e5e5e5">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
             <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="290dp"
+                android:layout_height="35dp"
                 android:id="@+id/txtDari"
-                android:hint="Dari"/>
+                android:hint="Dari"
+                android:background="#e3e6e8"
+                android:backgroundTintMode="screen"
+                android:password="false"
+                android:phoneNumber="false"
+                android:selectAllOnFocus="false" />
             <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
                 android:id="@+id/txtKe"
-                android:hint="Ke"/>
+                android:hint="Ke"
+                android:background="#e3e6e8"
+                android:textIsSelectable="false" />
         </LinearLayout>
 
         <Button
@@ -32,7 +40,7 @@
             android:onClick="btnGoOnClick"
             android:layout_gravity="right|center"
             android:height="@dimen/place_autocomplete_prediction_height"
-            />
+            android:background="#e3e6e8" />
     </GridLayout>
 
     <fragment

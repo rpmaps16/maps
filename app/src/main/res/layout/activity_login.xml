@@ -3,30 +3,73 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="#050404">
 
     <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome to pMaps"
+        android:id="@+id/textView"
+        android:textAlignment="center"
+        android:textSize="73px"
+        android:textColor="#ffffff"
+        android:typeface="monospace" />
+
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="RPLMaps"
-        android:id="@+id/textView"
+        android:id="@+id/imageView"
+        android:layout_weight="1"
+        android:src="@drawable/logo2" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:id="@+id/txtUsername"
+            android:hint="Username"
+            android:backgroundTint="#ffffff"
+            android:textColorHint="#ffffff"
+            android:textColor="#ffffff" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView3"
+            android:src="@drawable/logoiconuser" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="top"
+        android:weightSum="1">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/txtUsername"
-        android:hint="Username" />
+        <EditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/txtPassword"
+            android:hint="Password"
+            android:backgroundTint="#ffffff"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff" />
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/txtPassword"
-        android:hint="Password" />
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView2"
+            android:src="@drawable/logoiconpass" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:orientation="horizontal"
@@ -38,24 +81,27 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Login"
             android:id="@+id/btnLogin"
-            android:onClick="btnLoginOnClick"/>
+            android:onClick="btnLoginOnClick"
+            android:backgroundTint="#ffffff"
+            android:text="LOGIN" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cancel"
             android:id="@+id/btnCancel"
-            android:onClick="btnCancelOnClick"/>
+            android:onClick="btnCancelOnClick"
+            android:backgroundTint="#ffffff"
+            android:text="CANCEL" />
     </LinearLayout>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Daftar"
         android:id="@+id/btnDaftar"
         android:layout_gravity="center_horizontal"
-        android:onClick="btnNewUserOnClick"/>
+        android:onClick="btnNewUserOnClick"
+        android:backgroundTint="#ffffff"
+        android:text="REGISTER NOW!" />
 
 </LinearLayout>
